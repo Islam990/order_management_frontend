@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../Security/AuthContext";
 
 const Login = () => {
 
@@ -8,6 +9,7 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [errorMsg, setErrorMsg] = useState(false);
     const navigate = useNavigate();
+    const authContect = useAuth()
 
     function handleUserEmail(event) {
         setUserName(event.target.value);
@@ -21,6 +23,7 @@ const Login = () => {
         if (userName === 'eslamGad' && password === '123456') {
             setErrorMsg(false)
             navigate(`/dashboard/${userName}`)
+            authContect.setIsAuthentacted(true)
         } else {
             setErrorMsg(true)
         }
