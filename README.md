@@ -1,3 +1,8 @@
+
+# HardCoded Login, No Basic Auth Or JWT here, You cannot access dashboard page without right creditionals 
+email: eslamhendy990@gmail.com
+password: 123456
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
