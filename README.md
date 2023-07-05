@@ -1,6 +1,7 @@
 
 # Note: Hard Coded Login
-No Basic Auth Or JWT in this application, You can not access dashboard page without right creditionals.\ 
+No Basic Auth Or JWT in this application, You can not access dashboard page without right creditionals.\
+ 
 userName: eslamGad
 password: 123456
 
