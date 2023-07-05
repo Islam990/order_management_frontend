@@ -1,31 +1,29 @@
 import { useParams } from 'react-router-dom';
 import '../App.css';
+import axios from 'axios';
+import { useState } from 'react';
 
 
 const Dashboard = () => {
 
     const params = useParams();
 
+    const [orders, setOrders] = useState([]);
 
-    const orders = [
-        {
-            id: 1, date: new Date(), products:
-                [
-                    { id: 1, productName: 'Rice', Price: 5, quantity: 1 },
-                    { id: 2, productName: 'Banana', Price: 10, quantity: 2 },
-                    { id: 3, productName: 'Shoes', Price: 5, quantity: 1 }
-                ]
-        },
+    useState(() => {
+        getOrders()
+    }, [orders])
 
-        {
-            id: 2, date: new Date(), products:
-                [
-                    { id: 4, productName: 'Rice', Price: 7.5, quantity: 1 },
-                    { id: 5, productName: 'Tomoto', Price: 10, quantity: 2 },
-                ]
-        }
+    async function getOrders() {
+        await axios.get(`http://localhost:8080/${params.userName}/getOrders`).
+            then((response) => {
+                setOrders(response.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
-    ];
 
     return (
         <div className='dashboard'>
@@ -35,20 +33,22 @@ const Dashboard = () => {
             {orders.map(
                 order => (
                     <div className="container" key={order.id}>
-                        <h2>Order Id {order.id}, {order.date.toString()}</h2>
+                        <h3>Order Id <u>{order.id}</u> , Time|  {order.date}</h3>
                         <table className="table">
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Product Name</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {order.products.map(product => (
+                                {order.productList.map(product => (
                                     <tr key={`${order.id}-${product.id}`}>
-                                        <td>{product.productName}</td>
-                                        <td>{product.Price}</td>
+                                        <td>{product.id}</td>
+                                        <td>{product.name}</td>
+                                        <td>{product.price}</td>
                                         <td>{product.quantity}</td>
                                     </tr>
                                 ))}
