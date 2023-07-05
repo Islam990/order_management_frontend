@@ -15,7 +15,7 @@ const Dashboard = () => {
     }, [orders])
 
     async function getOrders() {
-        await axios.get(`http://localhost:8080/${params.userName}/getOrders`).
+        await axios.get(`http://localhost:8080/getOrders`).
             then((response) => {
                 setOrders(response.data);
             })
