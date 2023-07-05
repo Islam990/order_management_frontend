@@ -3,6 +3,12 @@
   margin: 20px;
 }
 
+.dashboard{
+  padding: 5px;
+  margin: 20px;
+  text-align: center;
+}
+
 input{
   padding: 10px;
   width: 400px;

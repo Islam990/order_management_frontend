@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    const [email, setEmail] = useState('eslamhendy990@gmail.com')
+    const [userName, setUserName] = useState('eslamGad')
     const [password, setPassword] = useState('')
     const [errorMsg, setErrorMsg] = useState(false);
     const navigate = useNavigate();
 
     function handleUserEmail(event) {
-        setEmail(event.target.value);
+        setUserName(event.target.value);
     }
 
     function handleUserPassword(event) {
@@ -18,9 +18,9 @@ const Login = () => {
     }
 
     async function submit() {
-        if (email === 'eslamhendy990@gmail.com' && password === '123456') {
+        if (userName === 'eslamGad' && password === '123456') {
             setErrorMsg(false)
-            navigate('/dashboard')
+            navigate(`/dashboard/${userName}`)
         } else {
             setErrorMsg(true)
         }
@@ -31,7 +31,7 @@ const Login = () => {
             {errorMsg && <div className='error'>Failed Login, Please check The Hard Coded creditionals In ReadMe File </div>}
             <h1>Time To Login</h1>
             <div className="Login">
-                Email Ad : <input type="text" name="email" value={email} onChange={handleUserEmail}></input>
+                Email Ad : <input type="text" name="email" value={userName} onChange={handleUserEmail}></input>
             </div>
             <div className="Login">
                 Password : <input type="password" name="password" value={password} onChange={handleUserPassword}></input>
