@@ -4,15 +4,13 @@ import Dashboard from './Components/Dashboard';
 import Error from './Components/Error';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthProvider from './Security/AuthContext';
-import { useAuth } from "./Security/AuthContext";
 import { Navigate } from 'react-router-dom';
 
 
 function App() {
 
   function AuthentactedRoute({ children }) {
-    const authContect = useAuth();
-    if (authContect.isAuthentacted)
+    if (localStorage.getItem("isAuthentacted"))
       return children;
 
     return <Navigate to="/" />

@@ -23,7 +23,7 @@ const Login = () => {
         if (userName === 'eslamGad' && password === '123456') {
             setErrorMsg(false)
             navigate(`/dashboard/${userName}`)
-            authContect.setIsAuthentacted(true)
+            localStorage.setItem("isAuthentacted", true);
         } else {
             setErrorMsg(true)
         }
